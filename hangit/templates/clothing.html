@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="grid clothing">
+	{% for clothing in clothings %}
+	<div class="col-3-12">
+		<img src="{{ clothing.image.url }}" />
+	</div>
+	{% endfor %}
+</div>
+{% endblock content %}

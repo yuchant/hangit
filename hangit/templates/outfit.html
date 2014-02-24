@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form method="POST">
+
+	<div class="grid clothing outfits">
+		<div class="grid">
+			<div class="col-4-12">
+				<div class='label'>
+					Scheduled for:
+				</div>
+				{{ form.scheduled_date }}
+			</div>
+			<div class="col-4-12">
+				<div class='label'>
+					Name:
+				</div>
+				{{ form.name }}
+			</div>
+		</div>
+		<input type="submit" value="SAVE OUTFIT" />
+		<br>
+		<table>
+			<tr>
+				<td>
+					Hat:
+					{{ form.hat.image.url }}
+				</td>
+				<td>
+					<div style="display: none;">
+						{{ form.hat }}
+					</div>
+					{% for image in form.hat.field.choices.queryset %}
+						<img class="outfit-choice {% if image.pk == form.instance.hat.pk %}active{% endif %}" src="{{ image.image.url }}"  data-id="{{ image.id }}">
+					{% endfor %}
+					<div class="outfit-choice none-choice" data-id="">
+						None
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Jacket:
+					{{ form.jacket.image.url }}
+				</td>
+				<td>
+					<div style="display: none;">
+						{{ form.jacket }}
+					</div>
+					{% for image in form.jacket.field.choices.queryset %}
+						<img class="outfit-choice {% if image.pk == form.instance.jacket.pk %}active{% endif %}" src="{{ image.image.url }}" data-id="{{ image.id }}">
+					{% endfor %}
+					<div class="outfit-choice none-choice" data-id="">
+						None
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Torso:
+					{{ form.torso.image.url }}
+				</td>
+				<td>
+					<div style="display: none;">
+						{{ form.torso }}
+					</div>
+					{% for image in form.torso.field.choices.queryset %}
+						<img class="outfit-choice {% if image.pk == form.instance.torso.pk %}active{% endif %}" src="{{ image.image.url }}" data-id="{{ image.id }}">
+					{% endfor %}
+					<div class="outfit-choice none-choice" data-id="">
+						None
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Legs
+					{{ form.legs.image.url }}
+				</td>
+				<td>
+					<div style="display: none;">
+						{{ form.legs }}
+					</div>
+					{% for image in form.legs.field.choices.queryset %}
+						<img class="outfit-choice {% if image.pk == form.instance.legs.pk %}active{% endif %}" src="{{ image.image.url }}" data-id="{{ image.id }}">
+					{% endfor %}
+					<div class="outfit-choice none-choice" data-id="">
+						None
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Feet
+					{{ form.feet.image.url }}
+				</td>
+				<td>
+					<div style="display: none;">
+						{{ form.feet }}
+					</div>
+					{% for image in form.feet.field.choices.queryset %}
+						<img class="outfit-choice {% if image.pk == form.instance.feet.pk %}active{% endif %}" src="{{ image.image.url }}" data-id="{{ image.id }}">
+					{% endfor %}
+					<div class="outfit-choice none-choice" data-id="">
+						None
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Accessory
+					{{ form.accessory.image.url }}
+				</td>
+				<td>
+					<div style="display: none;">
+						{{ form.accessory }}
+					</div>
+					{% for image in form.accessory.field.choices.queryset %}
+						<img class="outfit-choice {% if image.pk == form.instance.accessory.pk %}active{% endif %}" src="{{ image.image.url }}" data-id="{{ image.id }}">
+					{% endfor %}
+					<div class="outfit-choice none-choice" data-id="">
+						None
+					</div>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+	<input type="submit" value="SAVE" />
+	{% csrf_token %}
+
+</form>
+{% endblock content %}

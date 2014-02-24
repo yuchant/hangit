@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% for outfit in outfits %}
+		<div class="outfit-row {% if forloop.counter == 2 %}first{% endif %}">
+			<h2>
+				{{ outfit.name }}
+			</h2>
+			{% if forloop.first %}
+				<a href="/outfits/{{ outfit.id }}/">
+					Today
+				</a>
+			{% else %}
+				<a href="/outfits/{{ outfit.id }}/">
+					{{ outfit.scheduled_date }}
+				</a>
+			{% endif %}
+			<br><br>
+			<div class="outfit-contents">
+				<a href="/outfits/{{ outfit.id }}/">
+				<!-- <div class="col-2-12"> -->
+					<img class="clothing" src="{{ outfit.hat.image.url }}" />
+					&nbsp;
+<!-- 				</div>
+				<div class="col-2-12"> -->
+					<img class="clothing" src="{{ outfit.jacket.image.url }}" />
+					&nbsp;
+				<!-- </div> -->
+				<!-- <div class="col-2-12"> -->
+					<img class="clothing" src="{{ outfit.torso.image.url }}" />
+					&nbsp;
+<!-- 				</div>
+				<div class="col-2-12">
+ -->					<img class="clothing" src="{{ outfit.legs.image.url }}" />
+					&nbsp;
+				<!-- </div> -->
+				<!-- <div class="col-2-12"> -->
+					<img class="clothing" src="{{ outfit.feet.image.url }}" />
+					&nbsp;
+				<!-- </div> -->
+				<!-- <div class="col-2-12"> -->
+					<img class="clothing" src="{{ outfit.accessory.image.url }}" />
+					&nbsp;
+				<!-- </div> -->
+				</a>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
